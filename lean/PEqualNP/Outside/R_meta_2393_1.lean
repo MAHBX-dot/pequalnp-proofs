@@ -1,7 +1,5 @@
 import PEqualNP.Defs
 
-namespace PEqualNP.Outside
-
 open PEqualNP.CircuitLowerBounds PEqualNP.MetaComplexity PEqualNP.MetaComplexity.NestedCover
   PEqualNP.TopForm
 
@@ -9,7 +7,7 @@ open PEqualNP.CircuitLowerBounds PEqualNP.MetaComplexity PEqualNP.MetaComplexity
 top form, and (2) no junk AND gate means every AND gate is below `F`. Given those, `andPairs`
 counts only pairs of AND gates with one strictly inside the cone of the other, and top form
 forbids exactly those, so the count is zero. -/
-theorem r_meta_2393_1
+theorem PEqualNP.Outside.R_meta_2393_1
     (hleast : ∀ (G : SimpleGraph (Fin 26)) [DecidableRel G.Adj] (C : Circuit),
       PEqualNP.TopForm.IsLeastAO G C → PEqualNP.TopForm.TopForm G C)
     (hbelow : ∀ (G : SimpleGraph (Fin 26)) [DecidableRel G.Adj] (C : Circuit),
@@ -30,4 +28,3 @@ theorem r_meta_2393_1
   · intro hp
     simp at hp
 
-end PEqualNP.Outside
