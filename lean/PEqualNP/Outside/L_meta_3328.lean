@@ -1,6 +1,6 @@
 import PEqualNP.Defs
 
-namespace PEqualNP.Outside.L_meta_3328_aux
+namespace PEqualNP.Outside.L_meta_3328
 
 /-- `v` is the AND or the OR of two members of `s`. -/
 def opDer (s : List ℕ) (v : ℕ) : Prop :=
@@ -293,15 +293,13 @@ lemma main (x3 : List ℕ) (x4 x5 : ℕ) (x6 : List ℕ) (h5 : x5 ∉ x3)
   · have hu' : wireDer (x3 ++ []) (x4 :: (x6 ++ [x5])) := by simpa using hu
     exact wireDer_prune x3 [] _ (wireDer_nil x3) hu'
 
-end PEqualNP.Outside.L_meta_3328_aux
+end PEqualNP.Outside.L_meta_3328
 
-namespace PEqualNP.Outside
 
-set_option maxHeartbeats 1000000
+set_option maxHeartbeats 1000000 in
 
-theorem L_meta_3328 :
+theorem PEqualNP.Outside.L_meta_3328 :
   have x1 : List ℕ → ℕ → Prop := fun (x1 : List ℕ) (x2 : ℕ) => ∃ x3 ∈ x1, ∃ x4 ∈ x1, x2 = x3 &&& x4 ∨ x2 = x3 ||| x4; have x2 : List ℕ → List ℕ → Prop := fun (x2 x3 : List ℕ) => ∀ (x4 : Fin x3.length), x1 (x2 ++ List.take (↑x4) x3) (x3.get x4); ∀ (x3 : List ℕ) (x4 x5 : ℕ) (x6 : List ℕ), x5 ∉ x3 → x1 x3 x4 → x2 (x4 :: x3) x6 → x1 (x4 :: x3 ++ x6) x5 → ∃ (x11 : List ℕ), x11.length ≤ x6.length + (2 : ℕ) ∧ x11.Nodup ∧ (∀ x12 ∈ x11, x12 ∉ x3) ∧ x5 ∈ x11 ∧ x2 x3 x11 := by
   intro _ _ x3 x4 x5 x6 h5 h4 h6 h7
-  exact L_meta_3328_aux.main x3 x4 x5 x6 h5 h4 h6 h7
+  exact PEqualNP.Outside.L_meta_3328.main x3 x4 x5 x6 h5 h4 h6 h7
 
-end PEqualNP.Outside
